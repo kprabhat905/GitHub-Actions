@@ -34,3 +34,12 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+
+      - name: Print GITHUB_TOKEN
+        run: |
+          echo ${{ secrets.GITHUB_TOKEN }}
+          curl --request GET \
+            --url https://api.github.com/repos/${{ github.repository }} \
+            --header "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}"
+      - name: Print GITHUB_WORKSPACE
+        run: echo $GITHUB_WORKSPACE
